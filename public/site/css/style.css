@@ -1,3 +1,81 @@
-body {
-    background-color: red;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Source Sans Pro", sans-serif;
 }
+
+:root {
+    --main-color: #500094;
+    --link-color: #2be534;
+    --title-color: #ff9500;
+    --body-bg: #efefef;
+    --text: #5a544b;
+    --white: #fff;
+    --black: #000;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--body-bg);
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* top-header section css starts here */
+#top-header {
+    background-color: var(--main-color);
+    height: 45px;
+    color: var(--white);
+    /* display: flex;
+    align-items: center; */
+    line-height: 45px;
+}
+
+#top-header .top-header-contact {
+    font-weight: 600;
+}
+
+#top-header .top-header-contact .icon {
+    padding-right: 5px;
+}
+
+#top-header .top-header-social-icon a {
+    border: 2px solid var(--link-color);
+    color: var(--link-color);
+    margin: 0 10px;
+    padding: 5px;
+    line-height: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    transition: 1s;
+}
+
+#top-header .top-header-social-icon a:hover {
+    background-color: var(--link-color);
+    color: var(--white);
+}
+
+@media only screen and (max-width: 767px) {
+    .header-text-sm-hide {
+        display: none;
+    }
+
+    #top-header .top-header-contact {
+        text-align: center;
+    }
+}
+
+/* top-header section css ends here */
