@@ -79,3 +79,65 @@ a {
 }
 
 /* top-header section css ends here */
+
+/* navbar section css starts here */
+
+#top-header-navbar .navbar {
+    padding: 0;
+}
+
+#top-header-navbar .navbar .navbar-brand {
+    padding: 0;
+}
+
+#top-header-navbar .navbar .navbar-brand img {
+    /* height: 100%; */
+    width: 120px;
+}
+
+#top-header-navbar .navbar .navbar-nav .dropdown .dropdown-menu {
+    /* background-color: red; */
+    padding: 0;
+    background-color: var(--white);
+    border: none;
+    border-radius: 0;
+}
+
+#top-header-navbar .navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item {
+    /* background-color: red; */
+    border-bottom: 2px solid var(--title-color);
+    padding: 10px;
+    text-align: center;
+    color: var(--title-color);
+    font-weight: bold;
+    margin: 0;
+}
+
+#top-header-navbar
+    .navbar
+    .navbar-nav
+    .dropdown
+    .dropdown-menu
+    .dropdown-item:hover {
+    background-color: var(--title-color);
+    color: white;
+}
+
+#top-header-navbar .navbar .navbar-nav .nav-item .nav-link {
+    color: var(--main-color);
+    font-weight: bold;
+    padding: 30px;
+    transition: 1s;
+}
+#top-header-navbar .navbar .navbar-nav .nav-item .nav-link:hover {
+    background-color: var(--main-color);
+    color: var(--white);
+    border-bottom: 5px solid var(--title-color);
+}
+#top-header-navbar .navbar .navbar-nav .nav-item .nav-link.active {
+    background-color: var(--main-color);
+    color: var(--white);
+    border-bottom: 5px solid var(--title-color);
+}
+
+/* navbar section css ends here */
