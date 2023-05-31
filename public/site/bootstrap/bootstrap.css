@@ -6122,7 +6122,7 @@ textarea.form-control-lg {
 }
 
 .carousel-control-prev {
-  left: 0;
+  /* left: 0; */
 }
 
 .carousel-control-next {
