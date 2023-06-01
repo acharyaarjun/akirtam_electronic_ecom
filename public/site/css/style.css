@@ -51,6 +51,32 @@ a {
     border: 2px solid var(--title-color);
     color: var(--white);
 }
+
+.section {
+    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.section .section-title {
+    /* background-color: red; */
+    text-align: center;
+    margin-bottom: 40px;
+}
+.section .section-title h6 {
+    color: var(--title-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 10px;
+}
+.section .section-title h2 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.section .section-title h2 span {
+    color: var(--title-color);
+}
 /* button css */
 
 @media only screen and (max-width: 800px) {
@@ -225,3 +251,45 @@ a {
 }
 
 /* slider section css ends here */
+
+/* about section css starts here */
+
+#about {
+    background-color: var(--body-bg);
+}
+
+#about .about-image img {
+    height: 70vh;
+    border-radius: 5px;
+}
+
+#about .about-content {
+    color: var(--text);
+    font-weight: 400;
+}
+
+#about .about-video iframe {
+    /* height: 350px; */
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 1496px) {
+    #about .about-content {
+        height: 40vh;
+    }
+
+    #about .about-video iframe {
+        height: 30vh;
+    }
+}
+@media only screen and (min-width: 1496px) {
+    #about .about-content {
+        height: 25vh;
+    }
+
+    #about .about-video iframe {
+        height: 45vh;
+    }
+}
+
+/* about section css ends here */

@@ -104,12 +104,12 @@
         <div class="container">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    {{-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                        aria-label="Slide 3"></button> --}}
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -208,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -217,12 +217,56 @@
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>
     </section>
     {{-- slider section ends here --}}
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h6>About Us</h6>
+                        <h2>Learn More <span>about us</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="about-image">
+                        <img src="{{ asset('site/image/about.png') }}" alt="ABOUT IMAGE"
+                            title="AKIRTAM ELECTRONIC ECOMMERCE WEBSITE" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="about-content">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque deserunt porro veniam aperiam
+                            iure iste sed, ipsa vero architecto nam, harum, laudantium doloribus sunt. Soluta,
+                            architecto doloribus. Ipsum, eos omnis.
+                            architecto doloribus. Ipsum, eos omnis.
+
+                        </p>
+
+                        <p style="text-align: center">
+                            <a class="btn mt-2">Read More</a>
+                        </p>
+                    </div>
+
+                    <div class="about-video">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube-nocookie.com/embed/zBjJUV-lzHo" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen style="width: 100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
