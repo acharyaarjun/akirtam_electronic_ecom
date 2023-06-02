@@ -293,3 +293,103 @@ a {
 }
 
 /* about section css ends here */
+
+/* product section css starts here */
+
+#product .product-box {
+    background-color: var(--body-bg);
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px 0px rgba(13, 29, 13, 0.1);
+    margin-bottom: 20px;
+}
+
+#product .product-box .product-image {
+    position: relative;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--white);
+}
+#product .product-box .product-image img {
+    height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#product .product-box .product-icon {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3;
+}
+
+#product .product-box .product-icon .icon {
+    font-size: 16px;
+    color: var(--main-color);
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid var(--main-color);
+    opacity: 1;
+}
+
+#product .product-box .product-icon .icon:hover {
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    color: var(--white);
+}
+
+#product .product-box .product-image:hover img {
+    opacity: 0.5;
+}
+#product .product-box .product-image:hover .product-icon {
+    opacity: 1;
+}
+
+#product .product-box .product-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    font-size: 20px;
+}
+#product .product-box .product-title a {
+    color: var(--black);
+    font-weight: bold;
+}
+#product .product-box .product-title span {
+    font-weight: bold;
+    font-size: 14px;
+}
+#product .product-box .product-title span .star {
+    color: var(--text);
+}
+
+#product .product-box .product-category {
+    font-weight: bold;
+    padding: 0 10px;
+}
+#product .product-box .product-category h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text);
+}
+#product .product-box .product-price p {
+    font-size: 24px;
+    line-height: 15px;
+    font-weight: bold;
+    padding: 0 10px;
+    color: var(--text);
+}
+#product .product-box .product-price del {
+    font-size: 16px;
+    color: red;
+}
+
+#product .product-box .button {
+    text-align: center;
+    padding-bottom: 20px;
+}
+/* product section css ends here */

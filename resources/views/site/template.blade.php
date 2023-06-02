@@ -102,17 +102,17 @@
     {{-- slider section starts here --}}
     <section id="slider">
         <div class="container">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    {{-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button> --}}
+                        aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" data-bs-interval="100">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="slider-center">
@@ -168,7 +168,7 @@
                                 <div class="slider-content">
                                     <div class="slider-center">
                                         <div class="slider-image">
-                                            <img src="{{ asset('site/image/slider1.png') }}" alt=""
+                                            <img src="{{ asset('site/image/about.png') }}" alt=""
                                                 class="img-fluid">
                                         </div>
                                     </div>
@@ -208,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -217,7 +217,7 @@
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
-                    </button> --}}
+                    </button>
                 </div>
             </div>
         </div>
@@ -267,6 +267,57 @@
             </div>
         </div>
     </section>
+
+    {{-- prdoducts section starts here --}}
+    <section id="product" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h6>Top Sale</h6>
+                        <h2>Our Popular <span>Products</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @for ($i = 0; $i < 8; $i++)
+                    <div class="col-md-3">
+                        <div class="product-box">
+                            <div class="product-image">
+                                <img src="{{ asset('site/image/headphone.png') }}" alt="Headphone" title="Headphone"
+                                    class="img-fluid" />
+
+                                <div class="product-icon">
+                                    <a href="#">
+                                        <i class="fa-regular fa-heart icon"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa-solid fa-cart-shopping icon"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-title">
+                                <a href="#">Headphone</a>
+                                <span>
+                                    <i class="fa-solid fa-star star"></i> 4.8(87)
+                                </span>
+                            </div>
+                            <div class="product-category">
+                                <h5>Earphone | <span class="text-success">Available in Stock</span></h5>
+                            </div>
+                            <div class="product-price">
+                                <p>Rs 1000 <del>Rs 1200</del></p>
+                            </div>
+                            <div class="button">
+                                <a href="#" class="btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                @endfor
+            </div>
+        </div>
+    </section>
+    {{-- prdoducts section end here --}}
 
 
 
