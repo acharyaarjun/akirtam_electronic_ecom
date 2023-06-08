@@ -8,6 +8,19 @@ class SiteController extends Controller
 {
     public function getHome()
     {
-        return view('site.template');
+        return view('site.home');
+    }
+
+    public function getAbout()
+    {
+        return view('site.about');
+    }
+    public function getService()
+    {
+        return view('site.service');
+    }
+    public function getContact()
+    {
+        return view('site.contact');
     }
 }
