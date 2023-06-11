@@ -458,3 +458,66 @@ a {
 }
 
 /* our category section css ends here */
+/* footer css starts here */
+
+#footer {
+    background-color: var(--footer-bg);
+    padding: 60px 0 40px 0;
+    color: var(--text);
+    line-height: 33px;
+}
+
+#footer h2 {
+    color: var(--title-color);
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#footer p {
+    font-size: 16px;
+    letter-spacing: 1px;
+    /* line-height: 33px; */
+    font-weight: bold;
+    color: var(--black);
+}
+
+#footer p .fot-icon {
+    margin-right: 5px;
+}
+
+#footer ul {
+    list-style-type: circle;
+    margin: 0;
+    padding: 0 0 0 18px;
+    letter-spacing: 1px;
+}
+
+#footer ul li {
+    margin-bottom: 10px;
+}
+
+#footer ul li a {
+    color: var(--black);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#footer ul li a:hover {
+    color: var(--main-color);
+}
+
+#bottom-footer {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    color: var(--white);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* footer css ends here */

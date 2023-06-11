@@ -336,7 +336,6 @@
     </section>
     {{-- service section ends here --}}
 
-
     {{-- prdoducts section starts here --}}
     <section id="product" class="section">
         <div class="container">
@@ -387,6 +386,95 @@
         </div>
     </section>
     {{-- prdoducts section end here --}}
+
+    {{-- footer section starts here --}}
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
+                    <h2>About Info</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia repellat laboriosam distinctio
+                        dolorum tempore.
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-location-dot fot-icon"></i> Address: Baglung
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-envelope fot-icon"></i> Email: apridcodes@gmail.com
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-phone fot-icon"></i> Phone: 061-234234
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-6">
+                    <h2>Information</h2>
+                    <ul>
+                        <li>
+                            <a href="">Sign In</a>
+                        </li>
+                        <li>
+                            <a href="">View Cart</a>
+                        </li>
+                        <li>
+                            <a href="">My Wishlist</a>
+                        </li>
+                        <li>
+                            <a href="">My Orders</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-6">
+                    <h2>Info Links</h2>
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Shop</a>
+                        </li>
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-2 col-sm-4 col-xs-6">
+                    <h2>Supported Area</h2>
+                    <ul>
+                        <li>
+                            <a href="#">Hello & Contact</a>
+                        </li>
+                        <li>
+                            <a href="#">Shipping & Tax</a>
+                        </li>
+                        <li>
+                            <a href="#">Retrun Policy</a>
+                        </li>
+                        <li>
+                            <a href="#">Affliates</a>
+                        </li>
+                        <li>
+                            <a href="#">Legal Notices</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bottom-footer">
+        <div>Copyright &copy; Akirtam | Developed with <b>Akirtam</b> by Akirtam.</div>
+    </section>
+    {{-- footer section ends here --}}
 
     {{-- jquery link gareko --}}
     <script src="{{ asset('site/jquery/jquery.js') }}"></script>
