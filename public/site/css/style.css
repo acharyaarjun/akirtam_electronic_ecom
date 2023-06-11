@@ -54,8 +54,14 @@ a {
 
 .section {
     background-color: rgb(255, 255, 255);
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding: 40px 20px;
+}
+
+@media only screen and (max-width: 1496px) {
+    .section {
+        min-height: 100vh;
+    }
 }
 
 .section .section-title {
@@ -196,14 +202,7 @@ a {
 
 /* slider section css starts here */
 #slider {
-    /* min-height: 55vh; */
     background-color: var(--slider-bg);
-}
-#slider .carousel {
-    /* height: 80vh; */
-}
-#slider .carousel .carousel-inner .carousel-item {
-    /* background-color: white; */
 }
 #slider .carousel .carousel-inner .carousel-item .slider-center {
     height: 100%;
@@ -394,7 +393,7 @@ a {
 }
 /* product section css ends here */
 
-/* service section starts here */
+/* service section css starts here */
 #service {
     background-color: var(--body-bg);
     padding: 40px 20px;
@@ -405,6 +404,7 @@ a {
     padding: 20px;
     text-align: center;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 #service .service-box .icon {
     padding: 20px;
@@ -428,4 +428,33 @@ a {
 #service .service-box p {
     color: var(--text);
 }
-/* service section ends here */
+/* service section css ends here */
+
+/* our category section css starts here */
+
+#category .category-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#category .category-box .image {
+    background-color: var(--body-bg);
+    border-radius: 120px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+#category .category-box .image img {
+    width: 130px;
+}
+
+#category .category-box .name h5 {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+/* our category section css ends here */

@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
     {{-- top-header section starts here --}}
     <section id="top-header">
         <div class="container">
@@ -268,6 +267,76 @@
         </div>
     </section>
 
+    {{-- our category section starts here --}}
+    <section id="category" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h6>Our Category</h6>
+                        <h2>Shop by <span>Category</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                @for ($i = 0; $i < 8; $i++)
+                    <div class="col-md-2">
+                        <a href="">
+                            <div class="category-box">
+                                <div class="image">
+                                    <img src="{{ asset('site/image/headphone.png') }}" alt="headphone"
+                                        title="headphone" class="img-fluid img-rounded" />
+                                </div>
+                                <div class="name">
+                                    <h5>Headphone</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endfor
+            </div>
+        </div>
+    </section>
+    {{-- our category section ends here --}}
+
+    {{-- service section starts here --}}
+    <section id="service">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="service-box">
+                        <i class="fa-solid fa-truck-fast icon"></i>
+                        <h2>Free Shipping</h2>
+                        <p>Order over $100</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="service-box">
+                        <i class="fa-solid fa-shield icon"></i>
+                        <h2>Secure Payment</h2>
+                        <p>100% Secure Payment</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="service-box">
+                        <i class="fa-solid fa-award icon"></i>
+                        <h2>Best Price</h2>
+                        <p>Guaranted Low Cost</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="service-box">
+                        <i class="fa-solid fa-right-left icon"></i>
+                        <h2>Easy Return</h2>
+                        <p>Within 30 Days Returns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- service section ends here --}}
+
+
     {{-- prdoducts section starts here --}}
     <section id="product" class="section">
         <div class="container">
@@ -318,45 +387,6 @@
         </div>
     </section>
     {{-- prdoducts section end here --}}
-
-    {{-- service section starts here --}}
-    <section id="service">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="service-box">
-                        <i class="fa-solid fa-truck-fast icon"></i>
-                        <h2>Free Shipping</h2>
-                        <p>Order over $100</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-box">
-                        <i class="fa-solid fa-shield icon"></i>
-                        <h2>Secure Payment</h2>
-                        <p>100% Secure Payment</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-box">
-                        <i class="fa-solid fa-award icon"></i>
-                        <h2>Best Price</h2>
-                        <p>Guaranted Low Cost</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-box">
-                        <i class="fa-solid fa-right-left icon"></i>
-                        <h2>Easy Return</h2>
-                        <p>Within 30 Days Returns</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- service section ends here --}}
-
-
 
     {{-- jquery link gareko --}}
     <script src="{{ asset('site/jquery/jquery.js') }}"></script>
