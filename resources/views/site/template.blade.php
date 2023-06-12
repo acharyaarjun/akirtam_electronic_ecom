@@ -53,7 +53,7 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Category
-                            </a>
+                            </a> 
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Lorem, ipsum dolor.Laptop</a></li>
                                 <li><a class="dropdown-item" href="#">Mobile</a></li>
