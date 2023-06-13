@@ -1,0 +1,53 @@
+categories: -id
+    -category_title
+    -slug
+    -category_image
+    -category_description
+    -status
+    -deleted_at
+    -created_at
+    -updated_at
+
+products: -id
+    -category_id
+    -product_title,
+    -slug
+    -product_image
+    -product_description
+    -stock
+    -orginal_cost
+    -discounted_cost
+    -status
+    -deleted_at
+    -created_at
+    -updated_at
+
+services: -id
+    -service_title
+    -slug
+    -service_icon
+    -service_descripton
+    -status
+    -deleted_at
+    -created_at
+    -updated_at
+
+sliders: -id
+    -slider_title
+    -slider_description
+    -slider_image
+    -status
+    -deleted_at
+    -created_at
+    -updated_at
+
+abouts: -id
+    -about_image
+    -about_description
+    -about_video
+    -created_at
+    -updated_at
+
+carts:
+orders:
+payments:
