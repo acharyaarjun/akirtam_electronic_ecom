@@ -11,10 +11,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -24,5 +24,17 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+
+    // Category manage garni function
+    public function getManageCategory()
+    {
+        return view('admin.category.manage');
+    }
+    // Product manage garni function
+    public function getManageProduct()
+    {
+        return view('admin.product.manage');
     }
 }
