@@ -16,6 +16,8 @@
     --white: #fff;
     --black: #000;
     --footer-bg: #d3d3d3e8;
+    --breadcrumb-bg: #a1c0c787;
+    --box-shadow: 0px 0px 20px #ccc;
 }
 
 body {
@@ -91,6 +93,85 @@ a {
         display: none;
     }
 }
+
+/* breadcrumb */
+
+.breadcrumbs {
+    padding: 20px 0;
+    min-height: 150px;
+    background-color: var(--breadcrumb-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs {
+        margin-top: 68px;
+    }
+}
+
+.breadcrumbs h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.breadcrumbs li {
+    font-weight: bold;
+}
+
+.breadcrumbs li a {
+    text-decoration: none;
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs h2 {
+        margin: 0 0 10px 0;
+    }
+}
+
+.breadcrumbs ol {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs ol li + li {
+    padding-left: 10px;
+    color: var(--title-color);
+}
+
+.breadcrumbs ol li + li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: var(--main-color);
+    content: "/";
+}
+
+@media (max-width: 768px) {
+    .breadcrumbs .d-flex {
+        display: block !important;
+    }
+
+    .breadcrumbs ol {
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .breadcrumbs ol li {
+        display: inline-block;
+    }
+}
+
+/* breadcrumb */
 
 /* top-header section css starts here */
 #top-header {
@@ -522,3 +603,63 @@ a {
 }
 
 /* footer css ends here */
+
+/* contact section starts here */
+#contact {
+    padding: 60px;
+    min-height: 100vh;
+    background-color: var(--white);
+}
+
+#contact .contact-box {
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--white);
+    background-clip: border-box;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+#contact .contact-box:hover .icon {
+    background-color: var(--title-color);
+    color: var(--white);
+}
+
+#contact .contact-box .icon {
+    color: var(--s-color);
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 50%;
+    transition: 1s;
+    margin-bottom: 10px;
+}
+
+#contact .contact-box .icon:hover {
+    background-color: var(--title-color);
+    color: var(--white);
+}
+
+#contact .contact-box h4 {
+    color: var(--main-color);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+#contact .contact-box p {
+    font-size: 14px;
+}
+
+#contact form .form-control {
+    border-radius: 20px;
+    padding-left: 20px;
+    border: 2px solid var(--title-color);
+    color: var(--title-color);
+}
+
+#contact form .form-control:focus {
+    box-shadow: var(--box-shadow);
+    border: 2px solid var(--sec-color);
+}
+
+/* contact css ends here */
