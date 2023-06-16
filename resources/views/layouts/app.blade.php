@@ -16,6 +16,12 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        label {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
