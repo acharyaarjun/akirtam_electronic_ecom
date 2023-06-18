@@ -1,12 +1,12 @@
-categories: -id
-    -category_title
-    -slug
-    -category_image
-    -category_description
-    -status
-    -deleted_at
-    -created_at
-    -updated_at
+categories: -id - primarykey
+    -category_title -> varchar, string
+    -slug -> varchar, string
+    -category_image -> varchar, string
+    -category_description -> longText
+    -status -> enum['active', 'disabled']
+    -deleted_at -> timestamp
+    -created_at -> timestamps
+    -updated_at -> timestamps
 
 products: -id
     -category_id
@@ -51,3 +51,28 @@ abouts: -id
 carts:
 orders:
 payments:
+
+-primary key $table->id();
+->string,varchar => 255 vanda lengths => $table->string('database_field_name');
+->integer => $table->integer('position');, bigInteger
+, unsignedBigInteger => $table->unsignedBigInteger
+
+$table->decimal('cost');
+longText => $table->longText('description');
+
+$table->unsignedBigInteger('category_id');
+$table->foreign('category_id')
+
+date(),
+time(),
+
+timestamp(),
+
+string('category')
+
+database name lowercase and plural
+Model name Capitilize and singular;
+
+categories => Category
+Product => products
+

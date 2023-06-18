@@ -47,3 +47,5 @@ Route::name('admin.')->group(function () {
         });
     });
 });
+
+// Route::get('admin/product/manage', [HomeController::class, 'getManageProduct'])->name('admin.getManageProduct')->middleware('auth');
