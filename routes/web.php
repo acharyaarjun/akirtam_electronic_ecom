@@ -39,6 +39,7 @@ Route::name('admin.')->group(function () {
             // admin category routes
             Route::prefix('category')->group(function () {
                 Route::get('manage', [HomeController::class, 'getManageCategory'])->name('getManageCategory');
+                Route::post('add', [HomeController::class, 'postAddCategory'])->name('postAddCategory');
             });
             // admin products routes
             Route::prefix('product')->group(function () {
