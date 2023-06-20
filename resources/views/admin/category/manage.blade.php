@@ -34,32 +34,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Image xa hai</td>
-                                    <td>Smart Watch</td>
-                                    <td>
-                                        <span class="text-success">Active</span>
-                                    </td>
-                                    <td>20 May, 2023</td>
-                                    <td>
-                                        <a href="" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Image xa hai</td>
-                                    <td>Smart Watch</td>
-                                    <td>
-                                        <span class="text-danger">Hidden</span>
-                                    </td>
-                                    <td>20 May, 2023</td>
-                                    <td>
-                                        <a href="" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
+                                @foreach ($categories as $item)
+                                    <?php
+                                    // dd($item);
+                                    ?>
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>
+                                            @if ($item->category_image != null)
+                                                <img src="{{ asset('uploads/category/' . $item->category_image) }}"
+                                                    class="img-responsive img-fluid" width="150" height="150" />
+                                            @else
+                                                <span class="text-danger">Image not available</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $item->category_title }}</td>
+                                        <td>
+                                            @if ($item->status == 'active')
+                                                <span class="text-success">Active</span>
+                                            @else
+                                                <span class="text-danger">Hidden</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $item->created_at->format('M d, Y') }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-success btn-sm">Edit</a>
+                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -106,7 +109,7 @@
                             <select name="status" id="status" class="form-control @error('status') is-invalid @enderror"
                                 required>
                                 <option value="active">Active</option>
-                                <option value="hidden">Hidden</option>
+                                <option value="inactive">Hidden</option>
                             </select>
 
                             @error('status')

@@ -17,6 +17,16 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <table class="table">
                             <thead>
                                 <tr>
@@ -69,7 +79,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin.postAddProduct') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
@@ -90,8 +101,9 @@
                                     <label for="category_id">Category*</label>
                                     <select name="category_id" id="category_id" class="form-control" required>
                                         <option value="">-----------Choose Category-----------</option>
-                                        <option value="1">Laptop</option>
-                                        <option value="2">Hedphone</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->category_title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -100,7 +112,7 @@
                                     <label for="status">Status*</label>
                                     <select name="status" id="status" class="form-control" required>
                                         <option value="active">Active</option>
-                                        <option value="hidden">Hidden</option>
+                                        <option value="inactive">Hidden</option>
                                     </select>
                                 </div>
                             </div>
@@ -126,8 +138,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group mb-2">
-                                    <label for="category_description">Description</label>
-                                    <textarea name="category_description" id="category_description" cols="30" rows="10" class="form-control"></textarea>
+                                    <label for="product_description">Description</label>
+                                    <textarea name="product_description" id="product_description" cols="30" rows="10" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>

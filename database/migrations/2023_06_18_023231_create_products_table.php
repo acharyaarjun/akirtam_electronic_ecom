@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('product_image')->unique();
             $table->longText('product_description')->nullable();
             $table->unsignedInteger('product_stock');
-            $table->decimal('original_cost');
+            $table->decimal('orginal_cost');
             $table->decimal('discounted_cost')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('deleted_at')->nullable();

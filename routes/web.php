@@ -44,6 +44,7 @@ Route::name('admin.')->group(function () {
             // admin products routes
             Route::prefix('product')->group(function () {
                 Route::get('manage', [HomeController::class, 'getManageProduct'])->name('getManageProduct');
+                Route::post('add', [HomeController::class, 'postAddProduct'])->name('postAddProduct');
             });
         });
     });
