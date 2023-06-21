@@ -29,4 +29,11 @@ class Product extends Model
     protected $casts = [
         'deleted_at' => 'datetime',
     ];
+
+
+    // prouduct ko category fetch garni
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
 }

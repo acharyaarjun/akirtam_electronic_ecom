@@ -25,4 +25,9 @@ class Category extends Model
     protected $casts = [
         'deleted_at' => 'datetime',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id');
+    }
 }

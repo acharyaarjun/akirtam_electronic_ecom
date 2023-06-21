@@ -43,25 +43,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Gaming Laptop</td>
-                                    <td>Laptop</td>
-                                    <td>
-                                        <img src="{{ asset('site/images/admin/mobile-img.png') }}" alt="Mobile Img">
-                                    </td>
-                                    <td>20</td>
-                                    <td>$255</td>
-                                    <td>$248</td>
-                                    <td>
-                                        <span style="padding-left: 10px;">🟢</span>
-                                    </td>
-                                    <td>15 June 2023</td>
-                                    <td>
-                                        <button class="btn btn-success btn-sm">Edit</button>
-                                        <button class="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
+                                @foreach ($products as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->product_title }}</td>
+                                        <?php
+                                        $categorytitle = \App\Models\Category::where('id', $item->category_id)
+                                            ->where('deleted_at', null)
+                                            ->limit(1)
+                                            ->first();
+                                        
+                                        // dd($item->category->category_title);
+                                        
+                                        ?>
+                                        {{-- <td>{{ $categorytitle->category_title }}</td> --}}
+                                        <td>{{ $item->category->category_title }}</td>
+                                        <td>
+                                            @if ($item->product_image != null)
+                                                <img src="{{ asset('uploads/product/' . $item->product_image) }}"
+                                                    class="img-responsive img-fluid" width="150" height="150" />
+                                            @else
+                                                <span class="text-danger">Image not available</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $item->product_stock }}</td>
+                                        <td>$ {{ $item->orginal_cost }}</td>
+                                        <td>$ {{ $item->discounted_cost }}</td>
+                                        <td>
+                                            @if ($item->status == 'active')
+                                                <span class="text-success">Active</span>
+                                            @else
+                                                <span class="text-danger">Hidden</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $item->created_at->format('M d, Y') }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-success btn-sm">Edit</a>
+                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -132,8 +153,8 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-2">
                                     <label for="discounted_cost">Discounted Cost*</label>
-                                    <input type="number" name="discounted_cost" id="discounted_cost" class="form-control"
-                                        required />
+                                    <input type="number" name="discounted_cost" id="discounted_cost"
+                                        class="form-control" />
                                 </div>
                             </div>
                             <div class="col-md-12">
