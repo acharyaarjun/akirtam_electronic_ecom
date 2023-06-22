@@ -40,6 +40,7 @@ Route::name('admin.')->group(function () {
             Route::prefix('category')->group(function () {
                 Route::get('manage', [HomeController::class, 'getManageCategory'])->name('getManageCategory');
                 Route::post('add', [HomeController::class, 'postAddCategory'])->name('postAddCategory');
+                Route::get('delete/{slug}', [HomeController::class, 'getDeleteCategory'])->name('getDeleteCategory');
             });
             // admin products routes
             Route::prefix('product')->group(function () {

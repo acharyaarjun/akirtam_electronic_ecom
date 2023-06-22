@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -131,7 +132,7 @@ class HomeController extends Controller
 
         $category_id = $request->input('category_id');
         $category = Category::where('id', $category_id)->where('deleted_at', null)->limit(1)->first();
-        
+
         if (is_null($category)) {
             return redirect()->back()->with('error', 'Category not found');
         }
@@ -184,5 +185,19 @@ class HomeController extends Controller
         $product->save();
 
         return redirect()->back()->with('success', 'Product added successfully');
+    }
+
+    // category delete garni function
+    public function getDeleteCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        $category->deleted_at = Carbon::now();
+        $category->save();
+
+        return redirect()->back()->with('success', 'Category deleted successfully!');
     }
 }

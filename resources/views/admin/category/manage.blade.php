@@ -22,6 +22,11 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <table class="table table-stripped">
                             <thead>
                                 <tr>
@@ -59,7 +64,8 @@
                                         <td>{{ $item->created_at->format('M d, Y') }}</td>
                                         <td>
                                             <a href="" class="btn btn-success btn-sm">Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{ route('admin.getDeleteCategory', $item->slug) }}"
+                                                class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
