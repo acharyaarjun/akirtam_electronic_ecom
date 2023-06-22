@@ -30,7 +30,7 @@
                         <table class="table table-stripped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>S.N</th>
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Status</th>
@@ -44,7 +44,7 @@
                                     // dd($item);
                                     ?>
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>
                                             @if ($item->category_image != null)
                                                 <img src="{{ asset('uploads/category/' . $item->category_image) }}"
@@ -63,7 +63,8 @@
                                         </td>
                                         <td>{{ $item->created_at->format('M d, Y') }}</td>
                                         <td>
-                                            <a href="" class="btn btn-success btn-sm">Edit</a>
+                                            <a href="{{ route('admin.getEditCategory', $item->slug) }}"
+                                                class="btn btn-success btn-sm">Edit</a>
                                             <a href="{{ route('admin.getDeleteCategory', $item->slug) }}"
                                                 class="btn btn-danger btn-sm">Delete</a>
                                         </td>

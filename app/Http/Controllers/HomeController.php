@@ -200,4 +200,93 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Category deleted successfully!');
     }
+
+    // category edit garni page dekahuna layeko
+    public function getEditCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        $data = [
+            'category' => $category,
+        ];
+
+        return view('admin.category.edit', $data);
+    }
+
+    // category edit garni function
+    public function postEditCategory(Request $request, $slug)
+    {
+        $category = Category::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        $request->validate([
+            'category_title' => 'required|unique:categories,category_title,' . $category->id,
+            'category_image' => 'image|mimes:jpeg,jpg,png,gif',
+            'status' => 'required|in:active,inactive'
+        ]);
+
+        // dd($request->all());
+
+        // $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
+
+        $category_title = $request->input('category_title');
+        // slug generate haneko
+        $slug = Str::slug($category_title);
+
+        $status = $request->input('status');
+        $category_description = $request->input('category_description');
+        $image = $request->file('category_image');
+        // dd($category_title, $slug);
+
+        // image xa vaney
+        if ($image) {
+            // image ko uniqe name generate garnixa
+            //md5(), sha1()
+            // $unique_name = md5(time());
+            $unique_name = sha1(time());
+            // dd($unique_name);
+
+            // image ko extension patta launa paryo
+            $extension = $image->getClientOriginalExtension();
+            // dd($extension);
+
+            // file ko name vaneko filename.extension (uniqename.extension)
+            $category_image = $unique_name . '.' . $extension;
+            // dd($category_image);
+
+            // yo name bata aayeko tyo image lai hamro public vitra move paryo
+            $image->move('uploads/category/', $category_image);
+
+            // purano image lai remove haneko
+            if ($category->category_image != null) {
+                unlink('uploads/category/' . $category->category_image);
+            }
+        }
+
+        // database ma save garna
+        // model_access_gareko_variable = new model_ko_name;
+
+
+        // $category = new Category; yo line edit garni bela lekhni hoina yesley chai naya category add garna help garxa so aailey ko case ma bug aauxa
+
+
+        // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
+        $category->category_title = $category_title;
+        $category->slug = $slug;
+        $category->status = $status;
+        $category->category_description = $category_description;
+
+        if ($image) {
+            $category->category_image = $category_image; // image ko uniquename.extension save gareko variable garnu hai
+        }
+
+        $category->save();
+
+        return redirect()->route('admin.getManageCategory')->with('success', 'Category edited successfully');
+    }
 }
