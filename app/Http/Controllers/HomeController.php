@@ -307,11 +307,10 @@ class HomeController extends Controller
     public function getEditProduct($slug)
     {
         $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
-        $categories = Category::where('deleted_at', null)->orderby('category_title', 'asc')->get();
-        // dd($categories);
         if (is_null($product)) {
             return redirect()->back()->with('error', 'Product not found');
         }
+        $categories = Category::where('deleted_at', null)->orderby('category_title', 'asc')->get();
         $data = [
             'product' => $product,
             'categories' => $categories
@@ -350,7 +349,7 @@ class HomeController extends Controller
         $category_id = $request->input('category_id');
         $category = Category::where('id', $category_id)->where('deleted_at', null)->limit(1)->first();
 
-        if (is_null($product)) {
+        if (is_null($category)) {
             return redirect()->back()->with('error', 'Category not found');
         }
 
