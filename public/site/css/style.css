@@ -525,6 +525,7 @@ a {
     background-color: var(--body-bg);
     border-radius: 120px;
     padding: 20px;
+    height: 160px;
     margin-bottom: 10px;
 }
 

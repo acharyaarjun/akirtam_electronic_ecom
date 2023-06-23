@@ -186,21 +186,22 @@ $activePage = 'homepage' --}}
                 </div>
             </div>
             <div class="row justify-content-center">
-                @for ($i = 0; $i < 8; $i++)
+                @foreach ($categories as $category)
                     <div class="col-md-2">
                         <a href="">
                             <div class="category-box">
                                 <div class="image">
-                                    <img src="{{ asset('site/image/headphone.png') }}" alt="headphone" title="headphone"
+                                    <img src="{{ asset('uploads/category/' . $category->category_image) }}"
+                                        alt="{{ $category->slug }}" title="{{ $category->category_title }}"
                                         class="img-fluid img-rounded" />
                                 </div>
                                 <div class="name">
-                                    <h5>Headphone</h5>
+                                    <h5>{{ $category->category_title }}</h5>
                                 </div>
                             </div>
                         </a>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </section>
