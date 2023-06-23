@@ -48,6 +48,9 @@ Route::name('admin.')->group(function () {
             Route::prefix('product')->group(function () {
                 Route::get('manage', [HomeController::class, 'getManageProduct'])->name('getManageProduct');
                 Route::post('add', [HomeController::class, 'postAddProduct'])->name('postAddProduct');
+                Route::get('delete/{slug}', [HomeController::class, 'getDeleteProduct'])->name('getDeleteProduct');
+                Route::get('edit/{slug}', [HomeController::class, 'getEditProduct'])->name('getEditProduct');
+                Route::post('edit/{slug}', [HomeController::class, 'postEditProduct'])->name('postEditProduct');
             });
         });
     });

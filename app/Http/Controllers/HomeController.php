@@ -289,4 +289,126 @@ class HomeController extends Controller
 
         return redirect()->route('admin.getManageCategory')->with('success', 'Category edited successfully');
     }
+
+    // product delete garni function
+    public function getDeleteProduct($slug)
+    {
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+
+        $product->deleted_at = Carbon::now();
+        $product->save();
+
+        return redirect()->back()->with('success', 'Product deleted successfully!');
+    }
+    // Product edit garni page dekhauna ko lagi
+    public function getEditProduct($slug)
+    {
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        $categories = Category::where('deleted_at', null)->orderby('category_title', 'asc')->get();
+        // dd($categories);
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+        $data = [
+            'product' => $product,
+            'categories' => $categories
+
+        ];
+        // dd($data);
+        return view('admin.product.edit', $data);
+    }
+    // product edit garni function
+    public function postEditProduct(Request $request, $slug)
+    {
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->limit(1)->first();
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+        // dd($product);
+        $request->validate([
+            'product_title' => 'required|unique:products,product_title,' . $product->id,
+            'category_id' => 'required|integer|exists:categories,id',
+            'product_stock' => 'required|integer',
+            'orginal_cost' => 'required|numeric',
+            'discounted_cost' => 'numeric',
+            'product_image' => 'image|mimes:jpeg,jpg,png,gif,webp',
+            'status' => 'required|in:active,inactive',
+            'product_description' => 'required'
+        ]);
+
+        //    dd($request->all());
+
+        // $function_ko_variable = $request->input('form_ko_name_ma_vayeko_value');
+
+        $product_title = $request->input('product_title');
+        // slug generate haneko
+        $slug = Str::slug($product_title);
+
+        $category_id = $request->input('category_id');
+        $category = Category::where('id', $category_id)->where('deleted_at', null)->limit(1)->first();
+
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        $status = $request->input('status');
+        $product_description = $request->input('product_description');
+        $orginal_cost = $request->input('orginal_cost');
+        $discounted_cost = $request->input('discounted_cost');
+        $stock = $request->input('product_stock');
+        $image = $request->file('product_image');
+        // dd($category_title, $slug);
+
+        // image xa vaney
+        if ($image) {
+            // image ko uniqe name generate garnixa
+            //md5(), sha1()
+            // $unique_name = md5(time());
+            $unique_name = sha1(time());
+            // dd($unique_name);
+
+            // image ko extension patta launa paryo
+            $extension = $image->getClientOriginalExtension();
+            // dd($extension);
+
+            // file ko name vaneko filename.extension (uniqename.extension)
+            $product_image = $unique_name . '.' . $extension;
+            // dd($category_image);
+
+            // yo name bata aayeko tyo image lai hamro public vitra move gareko
+            $image->move('uploads/product/', $product_image);
+
+            // image remove garnako lagi
+            if ($product->product_image) {
+                unlink('uploads/product/' . $product->product_image);
+            }
+        }
+
+        // database ma save garna
+        // model_access_gareko_variable = new model_ko_name;
+
+        // naya colum tehima edit nahunako lagi gareko tala ko uncomment
+        // $product = new Product();
+        // model_access_gareko_variable->database_ko_column_ko_field = database_ko_column_ko_field_ko_data_rakehko_variable;
+
+        $product->product_title = $product_title;
+        $product->category_id = $category->id;
+        $product->slug = $slug;
+        $product->status = $status;
+        $product->product_description = $product_description;
+        $product->orginal_cost = $orginal_cost;
+        $product->discounted_cost = $discounted_cost;
+        $product->product_stock = $stock;
+
+        if ($image) {
+            $product->product_image = $product_image; // image ko uniquename.extension save gareko variable garnu hai
+        }
+
+        $product->save();
+
+        return redirect()->route('admin.getManageProduct')->with('success', 'Product Edited successfully');
+    }
 }
