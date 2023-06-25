@@ -151,8 +151,8 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-2">
                                     <label for="discounted_cost">Discounted Cost*</label>
-                                    <input type="number" name="discounted_cost" id="discounted_cost"
-                                        class="form-control" />
+                                    <input type="number" name="discounted_cost" id="discounted_cost" class="form-control"
+                                        required />
                                 </div>
                             </div>
                             <div class="col-md-12">

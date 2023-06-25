@@ -22,6 +22,12 @@
     {{-- top header lai jabarjasti include gareko --}}
     @include('site.top-header')
 
+    <?php
+    $navbar_categories = \App\Models\Category::where('deleted_at', null)
+        ->where('status', 'active')
+        ->get();
+    ?>
+
     {{-- navbar section starts here --}}
     <section id="top-header-navbar">
         <nav class="navbar navbar-expand-lg bg-light">
@@ -50,14 +56,16 @@
                                 href="{{ route('getService') }}">Our Services</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Category
-                            </a> 
+                            <a class="nav-link dropdown-toggle {{ $activePage == 'productwithcategory' ? 'active' : '' }}"
+                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Lorem, ipsum dolor.Laptop</a></li>
-                                <li><a class="dropdown-item" href="#">Mobile</a></li>
-                                <li><a class="dropdown-item" href="#">Watch</a></li>
+                                @foreach ($navbar_categories as $navbar_category)
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('getProductsByCategory', $navbar_category->slug) }}">{{ $navbar_category->category_title }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -161,6 +169,66 @@
             </div>
         </div>
     </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal fade templateModal" id="templateModal" tabindex="-1" aria-labelledby="templateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="templateModalLabel">Shopping Cart</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- @if (Auth::user())
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            @foreach ($carts as $cart)
+                                <div class="row align-items-center justify-content-center black-border">
+                                    <div class="col-md-3">
+                                        <img src="{{ asset('site/uploads/books/' . $cart->product->book_image) }}"
+                                            alt="" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p>
+                                            {{ $cart->product->book_name }}
+                                        </p>
+                                        <p>{{ $cart->product->book_author }}</p>
+                                        <p>{{ $cart->quantity }} * Rs. {{ $cart->cost }}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="{{ route('getDeleteCart', $cart->id) }}" class="btn btn-delete"><i
+                                                class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="row mx-2 p-2 top-bottom-border">
+                                <div class="col-md-6">
+                                    Total:
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    Rs. {{ $total_amount }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row model-footer">
+                        <div class="col-md-12 text-center px-5">
+                            <a href="{{ route('getCart') }}" class="btn w-100 btn-normal">Go to Cart</a>
+                        </div>
+                        <div class="col-md-12 text-center px-5 mb-2">
+                            <a href="{{ route('getCheckout') }}" class="btn w-100 btn-normal">Proceed To Checkout</a>
+                        </div>
+                    </div> --}}
+                    {{-- @else --}}
+                    <div class="modal-body">
+                        <div class="alert alert-danger">No data found!</div>
+                    </div>
+                    {{-- @endif --}}
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section id="bottom-footer">
         <div>Copyright &copy; Akirtam | Developed with <b>Akirtam</b> by Akirtam.</div>

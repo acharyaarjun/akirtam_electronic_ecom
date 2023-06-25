@@ -28,6 +28,11 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'category_id', 'id');
+        return $this->hasMany(Product::class, 'category_id', 'id')->where('deleted_at', null);
+    }
+
+    public function activeProducts()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id')->where('deleted_at', null)->where('status', 'active');
     }
 }

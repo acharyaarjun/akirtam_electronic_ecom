@@ -25,9 +25,13 @@
                     <a href="">
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
+
+                    <a data-bs-toggle="modal" data-bs-target="#templateModal"><i
+                            class="fa-solid fa-cart-shopping icon"></i></a>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 {{-- top-header section ends here --}}

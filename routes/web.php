@@ -20,6 +20,19 @@ Route::get('/', [SiteController::class, 'getHome'])->name('getHome');
 Route::get('/about', [SiteController::class, 'getAbout'])->name('getAbout');
 Route::get('/service', [SiteController::class, 'getService'])->name('getService');
 Route::get('/contact', [SiteController::class, 'getContact'])->name('getContact');
+Route::get('product/{slug}', [SiteController::class, 'getProductDetails'])->name('getProductDetails');
+
+
+Route::get('/cart', [SiteController::class, 'getCart'])->name('getCart')->middleware('auth');
+Route::get('/checkout', [SiteController::class, 'getCheckout'])->name('getCheckout');
+Route::get('/category/{slug}/products', [SiteController::class, 'getProductsByCategory'])->name('getProductsByCategory');
+
+Route::post('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->name('addToCartDirect')->middleware('auth');
+Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart')->middleware('auth');
+Route::get('/cart/{cart}/delete', [SiteController::class, 'getDeleteCart'])->name('getDeleteCart')->middleware('auth');
+Route::post('/cart/{cart}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart')->middleware('auth');
+Route::post('/checkout', [SiteController::class, 'postCheckout'])->name('postCheckout');
+
 
 
 /**

@@ -664,3 +664,394 @@ a {
 }
 
 /* contact css ends here */
+
+/* cart css starts here */
+
+#cart {
+    padding: 60px;
+    background-color: var(--white);
+}
+
+#cart .table {
+    border-color: var(--main-color);
+    text-align: center;
+    font-size: 14px;
+    justify-content: center;
+}
+
+#cart .table tbody td,
+#card .table thead th,
+#card .table tr {
+    vertical-align: center !important;
+    border: 1px solid var(--black) !important;
+}
+
+.table thead th {
+    border: 1px solid var(--black);
+}
+
+.table tbody td {
+    border: 1px solid var(--black);
+}
+
+#cart .table img {
+    height: 100px;
+}
+
+#cart .table .form-inline .form-control {
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+#cart .table .form-inline {
+    justify-content: center;
+}
+
+#cart .table .form-inline .btn-edit {
+    border-radius: 0;
+    padding: 1px 10px;
+    background-color: var(--success);
+    color: var(--white);
+    border: 2px solid var(--success);
+}
+
+#cart .table .btn-delete {
+    border-radius: 0;
+    padding: 1px 10px;
+    background-color: var(--danger);
+    color: var(--white);
+    border: 2px solid var(--danger);
+}
+
+#cart .btn-normal,
+#checkout .btn-normal,
+.templateModal .btn-normal {
+    border-radius: 0;
+    padding: 5px 20px;
+    border: 1px solid var(--title-color);
+    font-weight: normal;
+}
+
+#cart .btn-normal:hover,
+#checkout .btn-normal:hover,
+.templateModal .btn-normal:hover {
+    border: 1px solid var(--main-color);
+}
+
+.templateModal .btn-normal {
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-bottom: 10px;
+}
+
+#cart .tallo td {
+    border: 1px solid var(--nor-text);
+}
+
+#cart .card {
+    box-shadow: var(--box-shadow);
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#cart .card-header {
+    background-color: transparent;
+    text-align: center;
+}
+
+#cart .card-header h2 {
+    color: var(--title-color);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+#cart .card-body {
+    min-height: 200px;
+}
+
+#cart .card-body p {
+    font-size: 14px;
+}
+
+.templateModal .modal-content {
+    border: none;
+    border-radius: 0;
+    background-color: var(--white);
+}
+
+.templateModal .modal-header {
+    border-bottom: 1px solid var(--black);
+}
+
+.templateModal .modal-header .modal-title {
+    color: var(--title-color);
+    font-weight: 14px;
+}
+
+.templateModal .modal-header .close {
+    color: var(--title-color);
+    opacity: 1;
+}
+
+.templateModal .modal-body p {
+    line-height: 15px;
+    font-size: 14px !important;
+}
+
+.templateModal .modal-body .btn-delete {
+    border-radius: 0;
+    padding: 1px 10px;
+    background-color: var(--danger);
+    color: var(--white);
+    border: 2px solid var(--danger);
+}
+
+.templateModal .black-border {
+    margin: 10px;
+}
+
+.templateModal .top-bottom-border {
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    font-weight: bold;
+}
+
+/* cart css ends here */
+
+/* checkout css starts here */
+
+#checkout {
+    min-height: 100vh;
+    background-color: var(--white);
+    padding: 60px;
+}
+
+#checkout .card {
+    box-shadow: var(--box-shadow);
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#checkout .card-header {
+    background-color: transparent;
+    /* text-align: center; */
+}
+
+#checkout .card-header h2 {
+    color: var(--title-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#checkout .card-body {
+    min-height: 200px;
+}
+
+#checkout .card-body p {
+    font-size: 14px;
+}
+
+#checkout .card-body label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--title-color);
+}
+
+#checkout .card-body .form-control {
+    /* border-radius: 0; */
+    border: 1px solid #ccc;
+    color: var(--black) !important;
+    font-size: 14px;
+}
+
+#checkout .card-body .form-control:focus {
+    border: 2px solid var(--title-color);
+    outline: none;
+}
+
+#checkout .card .card-body p {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+#checkout .card .card-body img {
+    height: 60px;
+}
+
+#checkout .card .card-body .top-bottom-border {
+    font-weight: bold;
+}
+
+#checkout .card .card-body .top-bottom-border a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+#checkout .card .card-body .top-bottom-border .cost {
+    color: var(--title-color);
+}
+
+#checkout .card .card-body .form-check img {
+    width: 100%;
+    height: 50px;
+}
+
+/* checkout css endshere */
+
+/* product details css starts here */
+
+#product-detail {
+    padding: 60px;
+}
+
+#product-detail .book_name {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+#product-detail h6 {
+    font-size: 16px;
+    color: var(--title-color);
+    font-weight: bold;
+}
+
+#product-detail .cost del {
+    font-size: 12px;
+    padding: 10px;
+}
+
+#product-detail .cost span {
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+#product-detail .description p {
+    font-size: 14px;
+}
+
+#product-detail .category h6 {
+    font-size: 16px;
+    color: var(--nor-text);
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+
+#product-detail .form .form-control {
+    border-radius: 0;
+    height: 50px;
+}
+
+#product-detail .form .btn-cart {
+    border-radius: 0;
+    padding: 0;
+    line-height: 40px;
+    font-weight: normal;
+    padding: 1px 20px;
+    background-color: var(--title-color);
+    color: white;
+}
+
+#product-detail .form .btn-cart:hover {
+    background-color: var(--main-color);
+}
+
+#addreviewModal .modal-title {
+    color: var(--title-color);
+    font-weight: bold;
+}
+#addreviewModal .modal-title span {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+#addreviewModal label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--title-color);
+}
+
+#addreviewModal .form-control {
+    border-radius: 0;
+    border: 1px solid #ccc;
+    color: var(--black) !important;
+    font-size: 14px;
+    min-height: 40px;
+}
+
+#addreviewModal .form-control:focus {
+    border: 2px solid var(--title-color);
+    outline: none;
+}
+
+/* product details css ends here */
+
+/* account css starts here */
+
+#account {
+    padding: 60px;
+}
+
+#account .card {
+    box-shadow: var(--box-shadow);
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#account .card-header {
+    background-color: transparent;
+    text-align: center;
+    border-bottom: 2px solid var(--black);
+}
+
+#account .card-header h2 {
+    color: var(--main-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#account .card-body {
+    min-height: 200px;
+}
+
+#account .card-body p {
+    font-size: 14px;
+}
+
+#account .card-body label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+#account .card-body .form-control {
+    border-radius: 0;
+    border: 1px solid #ccc;
+    color: var(--black) !important;
+    font-size: 14px;
+    height: 40px;
+}
+
+#account .card-body .form-control:focus {
+    border: 2px solid var(--title-color);
+    outline: none;
+}
+
+#account .btn-normal {
+    border-radius: 0;
+    padding: 5px 20px;
+    border: 1px solid var(--title-color);
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+#account .btn-normal:hover {
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+/* account css starts here */
