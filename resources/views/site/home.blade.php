@@ -268,7 +268,7 @@ $activePage = 'homepage' --}}
                                     <a href="#">
                                         <i class="fa-regular fa-heart icon"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="{{ route('addToCartDirect', $item->slug) }}">
                                         <i class="fa-solid fa-cart-shopping icon"></i>
                                     </a>
                                 </div>

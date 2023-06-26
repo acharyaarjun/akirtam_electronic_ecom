@@ -27,11 +27,14 @@ Route::get('/cart', [SiteController::class, 'getCart'])->name('getCart')->middle
 Route::get('/checkout', [SiteController::class, 'getCheckout'])->name('getCheckout');
 Route::get('/category/{slug}/products', [SiteController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 
-Route::post('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->name('addToCartDirect')->middleware('auth');
-Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart')->middleware('auth');
-Route::get('/cart/{cart}/delete', [SiteController::class, 'getDeleteCart'])->name('getDeleteCart')->middleware('auth');
-Route::post('/cart/{cart}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart')->middleware('auth');
-Route::post('/checkout', [SiteController::class, 'postCheckout'])->name('postCheckout');
+Route::get('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->name('addToCartDirect');
+
+
+
+// Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart')->middleware('auth');
+// Route::get('/cart/{cart}/delete', [SiteController::class, 'getDeleteCart'])->name('getDeleteCart')->middleware('auth');
+// Route::post('/cart/{cart}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart')->middleware('auth');
+// Route::post('/checkout', [SiteController::class, 'postCheckout'])->name('postCheckout');
 
 
 

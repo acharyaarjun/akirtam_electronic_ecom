@@ -53,4 +53,15 @@ class SiteController extends Controller
     {
         return view('site.contact');
     }
+
+    public function addToCartDirect($slug)
+    {
+
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->where('status', 'active')->limit(1)->first();
+
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+        dd($slug);
+    }
 }
