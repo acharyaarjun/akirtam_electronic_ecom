@@ -49,7 +49,29 @@ abouts: -id
     -updated_at
 
 carts:
+    id,
+    cart_code
+    product_id,
+    price,
+    discount,
+    total_cost,
+    created_at,
+    updated_at
+
 orders:
+    id,
+    cart_code,
+    name,
+    email,
+    mobile_number,
+    address,
+    additional_information,
+    payment_method,
+    payment_status,
+    payment_amount,
+    created_at,
+    updated_at,
+    deleted_at,
 payments:
 
 -primary key $table->id();
