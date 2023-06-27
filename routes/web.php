@@ -27,6 +27,7 @@ Route::get('/cart', [SiteController::class, 'getCart'])->name('getCart')->middle
 Route::get('/checkout', [SiteController::class, 'getCheckout'])->name('getCheckout');
 Route::get('/category/{slug}/products', [SiteController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 
+Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart');
 Route::get('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->name('addToCartDirect');
 
 

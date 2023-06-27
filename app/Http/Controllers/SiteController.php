@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
@@ -54,14 +58,89 @@ class SiteController extends Controller
         return view('site.contact');
     }
 
-    public function addToCartDirect($slug)
+    public function addToCartDirect(Request $request, $slug)
     {
-
         $product = Product::where('slug', $slug)->where('deleted_at', null)->where('status', 'active')->limit(1)->first();
 
         if (is_null($product)) {
             return redirect()->back()->with('error', 'Product not found');
         }
-        dd($slug);
+
+        $cart_code = $this->getCartCode($request);
+
+        $quantity = 1;
+        $price = $product->orginal_cost - $product->discounted_cost;
+        $total_price = $quantity * $price;
+
+        $cart = new Cart;
+        $cart->cart_code = $cart_code;
+        $cart->product_id = $product->id;
+        $cart->quantity = $quantity;
+        $cart->price = $price;
+        $cart->total_price = $total_price;
+        $cart->save();
+
+        return redirect()->back()->with('success', 'Product added to cart');
+    }
+
+    public function postAddToCart(Request $request, $slug)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:5'
+        ]);
+        $product = Product::where('slug', $slug)->where('deleted_at', null)->where('status', 'active')->limit(1)->first();
+
+        if (is_null($product)) {
+            return redirect()->back()->with('error', 'Product not found');
+        }
+
+        $cart_code = $this->getCartCode($request);
+
+        $quantity = $request->input('quantity');
+        $price = $product->orginal_cost - $product->discounted_cost;
+        $total_price = $quantity * $price;
+
+        $cart = new Cart;
+        $cart->cart_code = $cart_code;
+        $cart->product_id = $product->id;
+        $cart->quantity = $quantity;
+        $cart->price = $price;
+        $cart->total_price = $total_price;
+        $cart->save();
+
+        return redirect()->back()->with('success', 'Product added to cart');
+    }
+
+    // cart code return garni function
+    public function getCartCode(Request $request)
+    {
+        // session bata cart code taneko
+        $cart_code = Session::get('cart_code');
+
+        // yedi session ma cart_code xaina vaney
+        if (is_null($cart_code)) {
+            // naya cart code generate gareko jun chai 8 length ko hunxa ani return gareko
+            $cart_code = Str::random(8);
+            // Session::put('cart_code', $cart_code);
+            session(['cart_code' => $cart_code]);
+            return $cart_code;
+        }
+        // yedi session ma cart code xa vaney
+        else {
+            // yedi tyo cart code already orders table ma xa vaney yaniki tyo cart code ko checkout vaeskako check gareko
+            $check = Order::where('cart_code', $cart_code)->limit(1)->first();
+
+            // orders table ma tyo cart code xaina vaney tehi cart_code return gareko
+            if (is_null($check)) {
+                return $cart_code;
+            }
+            // yedi orders table ma tyo cart code xa vaney naya cart code generate gareko
+            else {
+                $cart_code = Str::random(8);
+                session(['cart_code' => $cart_code]);
+                // Session::put('cart_code', $cart_code);
+                return $cart_code;
+            }
+        }
     }
 }

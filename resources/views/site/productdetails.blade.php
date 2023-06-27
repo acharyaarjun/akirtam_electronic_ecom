@@ -88,7 +88,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="number" min="1" max="30" class="form-control w-100"
+                                    <input type="number" min="1" max="5" class="form-control w-100"
                                         id="rating"name="quantity" name="quantity" required>
                                 </div>
                                 <div class="col-6">
