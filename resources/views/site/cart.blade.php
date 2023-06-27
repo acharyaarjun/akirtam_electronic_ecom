@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive card p-4">
-                        <table class="table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -57,7 +57,8 @@
                                         </td>
                                         <td>Rs. {{ $cart->total_price }}</td>
                                         <td>
-                                            <a href="{{ route('getDeleteCart', $cart->id) }}" class="btn btn-primary"><i
+                                            <a href="{{ route('getDeleteCart', $cart->id) }}" class="btn btn-primary"
+                                                style="background-color:rgb(116, 5, 5);red; border: 2px solid rgb(116, 5, 5);"><i
                                                     class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -90,7 +91,7 @@
                             <h2>Card Totals</h2>
                         </div>
                         <div class="card-body">
-                            <table class="table text-left">
+                            <table class="table table-bordered text-left">
                                 <thead class="tallo" style="font-weight: bold">
                                     <tr>
                                         <td>Sub Total</td>

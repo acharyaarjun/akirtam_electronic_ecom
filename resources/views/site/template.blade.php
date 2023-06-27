@@ -19,6 +19,12 @@
     {{-- toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
+    <style>
+        th,
+        td {
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
