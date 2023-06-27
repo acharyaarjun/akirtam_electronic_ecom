@@ -69,6 +69,13 @@ class SiteController extends Controller
         $cart_code = $this->getCartCode($request);
 
         $quantity = 1;
+
+        $stock = $product->product_stock;
+        $new_stock = $stock -  $quantity;
+        if ($new_stock < 1) {
+            return redirect()->back()->with('error', 'Product is out of stock');
+        }
+
         $price = $product->orginal_cost - $product->discounted_cost;
         $total_price = $quantity * $price;
 
@@ -79,6 +86,9 @@ class SiteController extends Controller
         $cart->price = $price;
         $cart->total_price = $total_price;
         $cart->save();
+
+        $product->product_stock = $new_stock;
+        $product->save();
 
         return redirect()->back()->with('success', 'Product added to cart');
     }
@@ -93,10 +103,16 @@ class SiteController extends Controller
         if (is_null($product)) {
             return redirect()->back()->with('error', 'Product not found');
         }
+        $quantity = $request->input('quantity');
+
+        $stock = $product->product_stock;
+        $new_stock = $stock -  $quantity;
+        if ($new_stock < 1) {
+            return redirect()->back()->with('error', 'Product is out of stock');
+        }
 
         $cart_code = $this->getCartCode($request);
 
-        $quantity = $request->input('quantity');
         $price = $product->orginal_cost - $product->discounted_cost;
         $total_price = $quantity * $price;
 
@@ -107,6 +123,9 @@ class SiteController extends Controller
         $cart->price = $price;
         $cart->total_price = $total_price;
         $cart->save();
+
+        $product->product_stock = $new_stock;
+        $product->save();
 
         return redirect()->back()->with('success', 'Product added to cart');
     }
