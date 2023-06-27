@@ -173,6 +173,16 @@
         </div>
     </section>
 
+    <?php
+    $cart_code = session('cart_code');
+    
+    $cart_items = \App\Models\Cart::where('cart_code', 'ram')->get();
+    if ($cart_code) {
+        $cart_items = \App\Models\Cart::where('cart_code', $cart_code)->get();
+        $total_amount = $cart_items->sum('total_price');
+    }
+    
+    ?>
     <!-- Shopping Cart Modal -->
     <div class="modal fade templateModal" id="templateModal" tabindex="-1" aria-labelledby="templateModalLabel"
         aria-hidden="true">
@@ -183,51 +193,52 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- @if (Auth::user())
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            @foreach ($carts as $cart)
-                                <div class="row align-items-center justify-content-center black-border">
-                                    <div class="col-md-3">
-                                        <img src="{{ asset('site/uploads/books/' . $cart->product->book_image) }}"
-                                            alt="" class="img-fluid">
+                    @if ($cart_items->count() > 0)
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                @foreach ($cart_items as $cart)
+                                    <div class="row align-items-center justify-content-center black-border">
+                                        <div class="col-md-3">
+                                            <img src="{{ asset('uploads/product/' . $cart->getProductFromCart->product_image) }}"
+                                                alt="" class="img-fluid">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p>
+                                                {{ $cart->getProductFromCart->product_title }}
+                                            </p>
+                                            <p>{{ $cart->getProductFromCart->category->category_title }}</p>
+                                            <p>{{ $cart->quantity }} * Rs. {{ $cart->price }}</p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a href="{{ route('getDeleteCart', $cart->id) }}"
+                                                class="btn btn-delete"><i class="fa-solid fa-trash"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        <p>
-                                            {{ $cart->product->book_name }}
-                                        </p>
-                                        <p>{{ $cart->product->book_author }}</p>
-                                        <p>{{ $cart->quantity }} * Rs. {{ $cart->cost }}</p>
+                                @endforeach
+                                <div class="row mx-2 p-2 top-bottom-border">
+                                    <div class="col-md-6">
+                                        Total:
                                     </div>
-                                    <div class="col-md-2">
-                                        <a href="{{ route('getDeleteCart', $cart->id) }}" class="btn btn-delete"><i
-                                                class="fa-solid fa-trash"></i></a>
+                                    <div class="col-md-6 text-right">
+                                        Rs. {{ $total_amount }}
                                     </div>
-                                </div>
-                            @endforeach
-                            <div class="row mx-2 p-2 top-bottom-border">
-                                <div class="col-md-6">
-                                    Total:
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    Rs. {{ $total_amount }}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row model-footer">
-                        <div class="col-md-12 text-center px-5">
-                            <a href="{{ route('getCart') }}" class="btn w-100 btn-normal">Go to Cart</a>
+                        <div class="row model-footer">
+                            <div class="col-md-12 text-center px-5">
+                                <a href="{{ route('getCart') }}" class="btn w-100 btn-normal">Go to Cart</a>
+                            </div>
+                            <div class="col-md-12 text-center px-5 mb-2">
+                                <a href="{{ route('getCheckout') }}" class="btn w-100 btn-normal">Proceed To
+                                    Checkout</a>
+                            </div>
                         </div>
-                        <div class="col-md-12 text-center px-5 mb-2">
-                            <a href="{{ route('getCheckout') }}" class="btn w-100 btn-normal">Proceed To Checkout</a>
+                    @else
+                        <div class="modal-body">
+                            <div class="alert alert-danger">No data found!</div>
                         </div>
-                    </div> --}}
-                    {{-- @else --}}
-                    <div class="modal-body">
-                        <div class="alert alert-danger">No data found!</div>
-                    </div>
-                    {{-- @endif --}}
+                    @endif
                 </div>
             </div>
         </div>

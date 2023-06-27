@@ -66,7 +66,7 @@ class SiteController extends Controller
             return redirect()->back()->with('error', 'Product not found');
         }
 
-        $cart_code = $this->getCartCode($request);
+        $cart_code = $this->getCartCode();
 
         $quantity = 1;
 
@@ -111,7 +111,7 @@ class SiteController extends Controller
             return redirect()->back()->with('error', 'Product is out of stock');
         }
 
-        $cart_code = $this->getCartCode($request);
+        $cart_code = $this->getCartCode();
 
         $price = $product->orginal_cost - $product->discounted_cost;
         $total_price = $quantity * $price;
@@ -130,8 +130,18 @@ class SiteController extends Controller
         return redirect()->back()->with('success', 'Product added to cart');
     }
 
+    public function  getCart()
+    {
+        $cart_code = $this->getCartCode();
+
+        $data = [
+            'carts' => Cart::where('cart_code', $cart_code)->get()
+        ];
+        return view('site.cart', $data);
+    }
+
     // cart code return garni function
-    public function getCartCode(Request $request)
+    public function getCartCode()
     {
         // session bata cart code taneko
         $cart_code = Session::get('cart_code');
