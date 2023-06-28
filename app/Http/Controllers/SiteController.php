@@ -140,6 +140,59 @@ class SiteController extends Controller
         return view('site.cart', $data);
     }
 
+    public function getUpdateCart(Request $request, $id)
+    {
+        $cart_code = $this->getCartCode();
+        $cart = Cart::where('cart_code', $cart_code)->where('id', $id)->limit(1)->first();
+        if (is_null($cart)) {
+            return redirect()->back()->with('error', 'Cart not found');
+        }
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:5'
+        ]);
+
+        $product = $cart->getProductFromCart;
+        // dd($product);
+
+        $quantity = $request->input('quantity');
+        $product_stock = $product->product_stock + $cart->quantity;
+        $new_stock = $product_stock -  $quantity;
+
+        if ($new_stock < 1) {
+            return redirect()->back()->with('error', 'Product is out of stock');
+        }
+
+        $price = $product->orginal_cost - $product->discounted_cost;
+        $total_price = $quantity * $price;
+
+        $cart->quantity = $quantity;
+        $cart->price = $price;
+        $cart->total_price = $total_price;
+        $cart->save();
+
+        $product->product_stock = $new_stock;
+        $product->save();
+
+        return redirect()->back()->with('success', 'Cart Updated Successfully');
+    }
+
+    public function getDeleteCart($id)
+    {
+        $cart_code = $this->getCartCode();
+        $cart = Cart::where('cart_code', $cart_code)->where('id', $id)->limit(1)->first();
+        if (is_null($cart)) {
+            return redirect()->back()->with('error', 'Cart not found');
+        }
+
+        $product = $cart->getProductFromCart;
+        $new_stock = $product->product_stock +  $cart->quantity;
+        $product->product_stock = $new_stock;
+        $product->save();
+
+        $cart->delete();
+        return redirect()->back()->with('success', 'Cart deleted Successfully');
+    }
+
     // cart code return garni function
     public function getCartCode()
     {
