@@ -24,7 +24,6 @@ Route::get('product/{slug}', [SiteController::class, 'getProductDetails'])->name
 
 
 Route::get('/cart', [SiteController::class, 'getCart'])->name('getCart');
-Route::get('/checkout', [SiteController::class, 'getCheckout'])->name('getCheckout');
 Route::get('/category/{slug}/products', [SiteController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 
 Route::post('/cart/{slug}/add', [SiteController::class, 'postAddToCart'])->name('postAddToCart');
@@ -32,6 +31,7 @@ Route::get('/cart/{slug}/direct', [SiteController::class, 'addToCartDirect'])->n
 Route::get('/cart/{id}/delete', [SiteController::class, 'getDeleteCart'])->name('getDeleteCart');
 Route::post('/cart/{id}/update', [SiteController::class, 'getUpdateCart'])->name('getUpdateCart');
 
+Route::get('/checkout', [SiteController::class, 'getCheckout'])->name('getCheckout');
 Route::post('/checkout', [SiteController::class, 'postCheckout'])->name('postCheckout');
 
 

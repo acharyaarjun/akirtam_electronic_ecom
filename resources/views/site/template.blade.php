@@ -216,8 +216,9 @@
                                             <p>{{ $cart->quantity }} * Rs. {{ $cart->price }}</p>
                                         </div>
                                         <div class="col-md-2">
-                                            <a href="{{ route('getDeleteCart', $cart->id) }}"
-                                                class="btn btn-delete"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="{{ route('getDeleteCart', $cart->id) }}" class="btn btn-danger"
+                                                style="background-color:rgb(116, 5, 5);red; border: 2px solid rgb(116, 5, 5);"><i
+                                                    class="fa-solid fa-trash"></i></a>
                                         </div>
                                     </div>
                                 @endforeach
