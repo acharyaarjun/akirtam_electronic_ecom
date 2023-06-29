@@ -66,6 +66,12 @@ Route::name('admin.')->group(function () {
                 Route::get('edit/{slug}', [HomeController::class, 'getEditProduct'])->name('getEditProduct');
                 Route::post('edit/{slug}', [HomeController::class, 'postEditProduct'])->name('postEditProduct');
             });
+
+            // order routes
+            Route::prefix('order')->group(function () {
+                Route::get('manage', [HomeController::class, 'getManageOrder'])->name('getManageOrder');
+                Route::get('payment/complete/{id}', [HomeController::class, 'makePaymentComplete'])->name('makePaymentComplete');
+            });
         });
     });
 });

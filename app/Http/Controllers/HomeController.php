@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
-use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -409,5 +410,33 @@ class HomeController extends Controller
         $product->save();
 
         return redirect()->route('admin.getManageProduct')->with('success', 'Product Edited successfully');
+    }
+
+    // order manage garni function
+    public function getManageOrder()
+    {
+        $data = [
+            'orders' => Order::all(),
+        ];
+
+        return view('admin.order.manage', $data);
+    }
+
+    public function makePaymentComplete($id)
+    {
+        $order = Order::where('id', $id)->limit(1)->first();
+        if (is_null($order)) {
+            return redirect()->back()->with('error', 'Order not found');
+        }
+
+        if ($order->payment_status == 'Y') {
+            $order->payment_status = 'N';
+            $order->save();
+        } else {
+            $order->payment_status = 'Y';
+            $order->save();
+        }
+
+        return redirect()->back()->with('success', 'Order payment status changed.');
     }
 }
