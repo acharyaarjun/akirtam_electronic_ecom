@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('mobile_number');
             $table->string('email');
             $table->string('address');
-            $table->text('additional_information');
+            $table->text('additional_information')->nullable();
             $table->enum('payment_method', ['online', 'cod']);
             $table->enum('payment_status', ['N', 'Y'])->default('N');
             $table->decimal('payment_amount');
