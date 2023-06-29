@@ -91,7 +91,7 @@ class SiteController extends Controller
         $product->product_stock = $new_stock;
         $product->save();
 
-        return redirect()->back()->with('success', 'Product added to cart');
+        return redirect()->route('getCart')->with('success', 'Product added to cart');
     }
 
     public function postAddToCart(Request $request, $slug)
@@ -128,7 +128,7 @@ class SiteController extends Controller
         $product->product_stock = $new_stock;
         $product->save();
 
-        return redirect()->back()->with('success', 'Product added to cart');
+        return redirect()->route('getCart')->with('success', 'Product added to cart');
     }
 
     public function  getCart()
